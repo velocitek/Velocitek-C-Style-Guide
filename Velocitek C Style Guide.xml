@@ -681,6 +681,9 @@ Alec Stewart<br/>
       <p>
         See also the section <a href="#The_-inl.h_Files">-inl.h Files</a>
       </p>
+      
+      
+      
     </BODY>
   </STYLEPOINT>
 
@@ -1768,10 +1771,7 @@ Alec Stewart<br/>
         wrapping all operators at the beginning of the line is also
         allowed.  Feel free to insert extra parentheses judiciously
         because they can be very helpful in increasing readability
-        when used appropriately.  Also note that you should always use the
-        punctuation operators, such as <code>&amp;&amp;</code> and
-        <code>~</code>, rather than the word operators, such as <code>and</code>
-        and <code>compl</code>.
+        when used appropriately.  
       </p>
     </BODY>
   </STYLEPOINT>
@@ -1799,46 +1799,6 @@ Alec Stewart<br/>
   </STYLEPOINT>
 
   
-
-  <STYLEPOINT title="Variable and Array Initialization">
-    <SUMMARY>
-      Your choice of <code>=</code>, <code>()</code>, or <code>{}</code>.
-    </SUMMARY>
-    <BODY>
-      <p>
-        You may choose between <code>=</code>, <code>()</code>, and
-        <code>{}</code>; the following are all correct:
-      </p>
-      <CODE_SNIPPET>
-        int x = 3;
-        int x(3);
-        int x{3};
-        string name = "Some Name";
-        string name("Some Name");
-        string name{"Some Name"};
-      </CODE_SNIPPET>
-      <p>
-        Be careful when using the <code>{}</code> on a type that takes an
-        <code>initializer_list</code> in one of its constructors. The
-        <code>{}</code> syntax prefers the <code>initializer_list</code>
-        constructor whenever possible. To get the non-
-        <code>initializer_list</code> constructor, use <code>()</code>.
-      </p>
-      <CODE_SNIPPET>
-        vector&lt;int&gt; v(100, 1);  // A vector of 100 1s.
-        vector&lt;int&gt; v{100, 1};  // A vector of 100, 1.
-      </CODE_SNIPPET>
-      <p>
-        Also, the brace form prevents narrowing of integral types. This can
-        prevent some types of programming errors.
-      </p>
-      <CODE_SNIPPET>
-        int pi(3.14);  // OK -- pi == 3.
-        int pi{3.14};  // Compile error: narrowing conversion.
-      </CODE_SNIPPET>
-    </BODY>
-  </STYLEPOINT>
-
   <STYLEPOINT title="Preprocessor Directives">
     <SUMMARY>
       The hash mark that starts a preprocessor directive should
@@ -1874,137 +1834,6 @@ Alec Stewart<br/>
     </BODY>
   </STYLEPOINT>
 
-  <STYLEPOINT title="Class Format">
-    <SUMMARY>
-      Sections in <code>public</code>, <code>protected</code> and
-      <code>private</code> order, each indented one space.
-    </SUMMARY>
-    <BODY>
-      <p>
-        The basic format for a class declaration (lacking the
-        comments, see <a HREF="#Class_Comments">Class Comments</a> for
-        a discussion of what comments are needed) is:
-      </p>
-      <CODE_SNIPPET>
-        class MyClass : public OtherClass {
-         public:      // Note the 1 space indent!
-          MyClass();  // Regular 2 space indent.
-          explicit MyClass(int var);
-          ~MyClass() {}
-
-          void SomeFunction();
-          void SomeFunctionThatDoesNothing() {
-          }
-
-          void set_some_var(int var) { some_var_ = var; }
-          int some_var() const { return some_var_; }
-
-         private:
-          bool SomeInternalFunction();
-
-          int some_var_;
-          int some_other_var_;
-          DISALLOW_COPY_AND_ASSIGN(MyClass);
-        };
-      </CODE_SNIPPET>
-      <p>
-        Things to note:
-      </p>
-      <ul>
-        <li> Any base class name should be on the same line as the
-             subclass name, subject to the 80-column limit.
-             </li>
-        <li> The <code>public:</code>, <code>protected:</code>, and
-             <code>private:</code> keywords should be indented one
-             space.
-             </li>
-        <li> Except for the first instance, these keywords should be preceded
-             by a blank line. This rule is optional in small classes.
-             </li>
-        <li> Do not leave a blank line after these keywords.
-             </li>
-        <li> The <code>public</code> section should be first, followed by
-             the <code>protected</code> and finally the
-             <code>private</code> section.
-             </li>
-        <li> See <a HREF="#Declaration_Order">Declaration Order</a> for
-             rules on ordering declarations within each of these sections.
-             </li>
-      </ul>
-    </BODY>
-  </STYLEPOINT>
-
-  <STYLEPOINT title="Constructor Initializer Lists">
-    <SUMMARY>
-      Constructor initializer lists can be all on one line or with
-      subsequent lines indented four spaces.
-    </SUMMARY>
-    <BODY>
-      <p>
-        There are two acceptable formats for initializer lists:
-      </p>
-      <CODE_SNIPPET>
-        // When it all fits on one line:
-        MyClass::MyClass(int var) : some_var_(var), some_other_var_(var + 1) {}
-      </CODE_SNIPPET>
-      <p>
-        or
-      </p>
-      <CODE_SNIPPET>
-        // When it requires multiple lines, indent 4 spaces, putting the colon on
-        // the first initializer line:
-        MyClass::MyClass(int var)
-            : some_var_(var),             // 4 space indent
-              some_other_var_(var + 1) {  // lined up
-          ...
-          DoSomething();
-          ...
-        }
-      </CODE_SNIPPET>
-    </BODY>
-  </STYLEPOINT>
-
-  <STYLEPOINT title="Namespace Formatting">
-    <SUMMARY>
-      The contents of namespaces are not indented.
-    </SUMMARY>
-    <BODY>
-      <p>
-        <a href="#Namespaces">Namespaces</a> do not add an extra level of
-        indentation. For example, use:
-      </p>
-      <CODE_SNIPPET>
-        namespace {
-
-        void foo() {  // Correct.  No extra indentation within namespace.
-          ...
-        }
-
-        }  // namespace
-      </CODE_SNIPPET>
-      <p>
-        Do not indent within a namespace:
-      </p>
-      <BAD_CODE_SNIPPET>
-        namespace {
-
-          // Wrong.  Indented when it should not be.
-          void foo() {
-            ...
-          }
-
-        }  // namespace
-      </BAD_CODE_SNIPPET>
-      <p>
-        When declaring nested namespaces, put each namespace on its own line.
-      </p>
-      <CODE_SNIPPET>
-        namespace foo {
-        namespace bar {
-      </CODE_SNIPPET>
-    </BODY>
-  </STYLEPOINT>
-
   <STYLEPOINT title="Horizontal Whitespace">
     <SUMMARY>
       Use of horizontal whitespace depends on location.  Never put trailing
@@ -2018,14 +1847,7 @@ Alec Stewart<br/>
         int i = 0;  // Semicolons usually have no space before them.
         int x[] = { 0 };  // Spaces inside braces for braced-init-list are
         int x[] = {0};    // optional.  If you use them, put them on both sides!
-        // Spaces around the colon in inheritance and initializer lists.
-        class Foo : public Bar {
-         public:
-          // For inline function implementations, put spaces between the braces
-          // and the implementation itself.
-          Foo(int b) : Bar(), baz_(b) {}  // No spaces inside empty braces.
-          void Reset() { baz_ = 0; }  // Spaces separating braces from implementation.
-          ...
+        
         </CODE_SNIPPET>
         <p>
           Adding trailing whitespace can cause extra work for others editing
@@ -2052,9 +1874,7 @@ Alec Stewart<br/>
         for ( ; i &lt; 5 ; ++i) {  // For loops always have a space after the
           ...                   // semicolon, and may have a space before the
                                 // semicolon.
-        for (auto x : counts) {  // Range-based for loops always have a
-          ...                    // space before and after the colon.
-        }
+        
         switch (i) {
           case 1:         // No space before colon in a switch case.
             ...
@@ -2074,19 +1894,7 @@ Alec Stewart<br/>
         v = w * (x + z);    // Parentheses should have no spaces inside them.
         </CODE_SNIPPET>
       </SUBSECTION>
-      <SUBSECTION title="Templates and Casts">
-        <CODE_SNIPPET>
-        vector&lt;string&gt; x;           // No spaces inside the angle
-        y = static_cast&lt;char*&gt;(x);  // brackets (&lt; and &gt;), before
-                                    // &lt;, or between &gt;( in a cast.
-        vector&lt;char *&gt; x;           // Spaces between type and pointer are
-                                    // okay, but be consistent.
-        set&lt;list&lt;string&gt;&gt; x;        // Permitted in C++11 code.
-        set&lt;list&lt;string&gt; &gt; x;       // C++03 required a space in &gt; &gt;.
-        set&lt; list&lt;string&gt; &gt; x;      // You may optionally use
-                                    // symmetric spacing in &lt; &lt;.
-        </CODE_SNIPPET>
-      </SUBSECTION>
+      
     </BODY>
   </STYLEPOINT>
 
@@ -2156,89 +1964,6 @@ Alec Stewart<br/>
 
   
 
-  <STYLEPOINT title="Windows Code">
-    <SUMMARY>
-      
-      Windows programmers have developed their own set of coding
-      conventions, mainly derived from the conventions in Windows headers
-      and other Microsoft code.  We want to make it easy for anyone to
-      understand your code, so we have a single set of guidelines for
-      everyone writing C++ on any platform.
-    </SUMMARY>
-    <BODY>
-      <p>
-        It is worth reiterating a few of the guidelines that you might
-        forget if you are used to the prevalent Windows style:
-      </p>
-      <ul>
-        <li> Do not use Hungarian notation (for example, naming an
-             integer <code>iNum</code>). Use the Google naming conventions,
-             including the <code>.cc</code> extension for source files.
-             </li>
-        <li> Windows defines many of its own synonyms for primitive
-             types, such as <code>DWORD</code>, <code>HANDLE</code>, etc.
-             It is perfectly acceptable, and encouraged, that you use these
-             types when calling Windows API functions. Even so, keep as
-             close as you can to the underlying C++ types. For example, use
-             <code>const TCHAR *</code> instead of <code>LPCTSTR</code>.
-             </li>
-        <li> When compiling with Microsoft Visual C++, set the
-             compiler to warning level 3 or higher, and treat all
-             warnings as errors.
-             </li>
-        <li> Do not use <code>#pragma once</code>; instead use the
-             standard Google include guards.  The path in the include
-             guards should be relative to the top of your project
-             tree.
-             </li>
-        <li> In fact, do not use any nonstandard extensions, like
-             <code>#pragma</code> and <code>__declspec</code>, unless you
-             absolutely must.  Using <code>__declspec(dllimport)</code> and
-             <code>__declspec(dllexport)</code> is allowed; however, you
-             must use them through macros such as <code>DLLIMPORT</code>
-             and <code>DLLEXPORT</code>, so that someone can easily disable
-             the extensions if they share the code.
-             </li>
-      </ul>
-      <p>
-        However, there are just a few rules that we occasionally need
-        to break on Windows:
-      </p>
-      <ul>
-        <li> Normally we <a HREF="#Multiple_Inheritance">forbid
-             the use of multiple implementation inheritance</a>; however,
-             it is required when using COM and some ATL/WTL
-             classes. You may use multiple implementation inheritance
-             to implement COM or ATL/WTL classes and interfaces.
-             </li>
-        <li> Although you should not use exceptions in your own code,
-             they are used extensively in the ATL and some STLs,
-             including the one that comes with Visual C++. When using
-             the ATL, you should define <code>_ATL_NO_EXCEPTIONS</code> to
-             disable exceptions. You should investigate whether you can
-             also disable exceptions in your STL, but if not, it is OK to
-             turn on exceptions in the compiler. (Note that this is
-             only to get the STL to compile. You should still not
-             write exception handling code yourself.)
-             </li>
-        <li> The usual way of working with precompiled headers is to
-             include a header file at the top of each source file,
-             typically with a name like <code>StdAfx.h</code> or
-             <code>precompile.h</code>. To make your code easier to share
-             with other projects, avoid including this file explicitly
-             (except in <code>precompile.cc</code>), and use the
-             <code>/FI</code> compiler option to include the file
-             automatically.
-             </li>
-        <li> Resource headers, which are usually named
-             <code>resource.h</code> and contain only macros, do not need
-             to conform to these style guidelines.
-             </li>
-      </ul>
-    </BODY>
-  </STYLEPOINT>
-
-  
 </CATEGORY>
 
 <PARTING_WORDS>
@@ -2272,17 +1997,8 @@ Alec Stewart<br/>
 <HR/>
 
 <p align="right">
-Revision 3.274
+Revision 0.1
 </p>
 
-
-
-<address>
-Benjy Weinberger<br/>
-Craig Silverstein<br/>
-Gregory Eitzmann<br/>
-Mark Mentovai<br/>
-Tashana Landray
-</address>
 
 </GUIDE>
