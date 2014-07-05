@@ -937,14 +937,11 @@ Alec Stewart<br/>
 
   <STYLEPOINT title="Comment Style">
     <SUMMARY>
-      Use either the <code>//</code> or <code>/* */</code> syntax, as long
-      as you are consistent.
+      Use the <code>//</code> syntax. Do not use the <code>/* */</code> syntax.
     </SUMMARY>
     <BODY>
       <p>
-        You can use either the <code>//</code> or the <code>/* */</code>
-        syntax; however, <code>//</code> is <em>much</em> more common.
-        Be consistent with how you comment and what style you use where.
+        To avoid clutter, don't make elaborate ASCII art. Just write text comments.
       </p>
     </BODY>
   </STYLEPOINT>
