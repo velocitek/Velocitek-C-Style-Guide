@@ -242,10 +242,23 @@ Alec Stewart<br/>
 
   <STYLEPOINT title="Names and Order of Includes">
     <SUMMARY>
-      Use standard order for readability and to avoid hidden
+      Use this order for readability and to avoid hidden
       dependencies: 
-      microcontroller's <code>.h</code>, C library, other libraries' <code>.h</code>,
-      your project's <code>.h</code>
+      
+      <ul>
+          <li> Main <code>.h</code> file that contains MCU fuse settings,
+               clock settings, and stream definitions.
+               </li>
+          <li> Standard C libraries
+               </li>
+          <li> Other libraries
+               </li>
+          <li> Your project's non-state machine <code>.h</code> files
+               </li>
+          <li> State machine <code>.h</code> files 
+               </li>
+          
+        </ul>
       
     </SUMMARY>
     <BODY>
