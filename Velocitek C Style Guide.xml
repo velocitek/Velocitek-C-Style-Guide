@@ -680,10 +680,17 @@ Alec Stewart<br/>
       </CODE_SNIPPET>
       <p>
         See also the section <a href="#The_-inl.h_Files">-inl.h Files</a>
-      </p>
-      
-      
-      
+      </p>      
+      <SUBSECTION title="State machine files">
+        <p>
+          State machine <code>.c</code> and <code>.h</code> files should be given the
+          prefix <code>sm_</code> for example:
+        </p>
+        <CODE_SNIPPET>
+          sm_master.c
+          sm_master.h
+        </CODE_SNIPPET>        
+      </SUBSECTION>      
     </BODY>
   </STYLEPOINT>
 
@@ -937,12 +944,23 @@ Alec Stewart<br/>
       <SUBSECTION title="Legal Notice and Author Line">
         
         <p>
-          Every file should contain the license boilerplate: <code>// Copyright (c) &lt;year&gt; Velocitek Inc. All rights reserved.</code>
+          Every file should contain this boilerplate: 
+        <CODE_SNIPPET>
+          // Copyright (c) &lt;year&gt; Velocitek Inc. All rights reserved.
+          // Author: &lt;your name&gt;
+        </CODE_SNIPPET>
         </p>
         <p>
           If you make significant changes to a file with an author line,
           consider deleting the author line.
+        </p>        
+        <p>
+          All state machine <code>.c</code> files should contain this line underneath
+          the author line:
         </p>
+        <CODE_SNIPPET>
+          // Hierarchical State Machine Template by Ed Carryer, Stanford University
+        </CODE_SNIPPET>
       </SUBSECTION>
 
       <SUBSECTION title="File Contents">
