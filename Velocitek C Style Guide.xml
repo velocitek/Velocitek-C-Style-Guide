@@ -968,20 +968,20 @@ Alec Stewart<br/>
           Every file should have a comment at the top describing its contents.
         </p>
         <p>
-          Generally a <code>.h</code> file will describe the classes
-          that are declared in the file with an overview of what they
+          Generally a <code>.h</code> file will describe the public
+          functions declared inthe file with an overview of what they
           are for and how they are used. A <code>.c</code> file
           should contain more information about implementation details
           or discussions of tricky algorithms. If you feel the
           implementation details or a discussion of the algorithms
           would be useful for someone reading the <code>.h</code>,
           feel free to put it there instead, but mention in the
-          <code>.cc</code> that the documentation is in the
+          <code>.c</code> that the documentation is in the
           <code>.h</code> file.
         </p>
         <p>
           Do not duplicate comments in both the <code>.h</code> and
-          the <code>.cc</code>. Duplicated comments diverge.
+          the <code>.c</code>. Duplicated comments diverge.
         </p>
       </SUBSECTION>
     </BODY>
