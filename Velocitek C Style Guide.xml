@@ -1,20 +1,16 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="styleguide.xsl"?>
-<GUIDE title="Google C++ Style Guide">
+<GUIDE title="Velocitek C Style Guide">
 
 <p align="right">
 
-Revision 3.274
+Revision 0.1
 </p>
 
 
-
 <address>
-Benjy Weinberger<br/>
-Craig Silverstein<br/>
-Gregory Eitzmann<br/>
-Mark Mentovai<br/>
-Tashana Landray
+Alec Stewart<br/>
+
 </address>
 
 <OVERVIEW>
@@ -37,38 +33,27 @@ Tashana Landray
 </CATEGORY>
 <CATEGORY title="Background">
   <p>
-    C++ is the main development language
-    
-    used by many of Google's open-source
-    projects.
-    As every C++ programmer knows, the language has many powerful features,
-    but this power brings with it complexity, which in turn can make code
-    more bug-prone and harder to read and maintain.
+    C is the language used for Velocitek firmware.
   </p>
   <p>
-    The goal of this guide is to manage this complexity by describing
-    in detail the dos and don'ts of writing C++
-    code. These rules exist to
-    keep
-    
-    the
-    code base manageable while still allowing coders to use C++ language
-    features productively.
+    The goal of this guide is to describe a consistent set of conventions for writing C that
+    Velocitek's developers can follow to make our source code more readable and easier to maintain.     
   </p>
+  <p>
+    This guide is mostly a copy of the 
+    <a HREF="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++ Style Guide</a>, with the parts that are only relevant to C++ removed as well as a few Velocitek-specific additions.
+  </p>
+  
   <p>
     <em>Style</em>, also known as readability, is what we call the
-    conventions that govern our C++ code. The term Style is a bit of a
+    conventions that govern our C code. The term Style is a bit of a
     misnomer, since these conventions cover far more than just source
     file formatting.
   </p>
   <p>
     One way in which we keep the code base manageable is by enforcing
-    <em>consistency</em>.
-    
-    It is very important that any
-    
-    programmer
-    be able to look at another's code and quickly understand it.
+    <em>consistency</em>. It is very important that any programmer be able 
+    to look at another's code and quickly understand it.
     Maintaining a uniform style and following conventions means that we can
     more easily use "pattern-matching" to infer what various symbols are
     and what invariants are true about them. Creating common, required
@@ -78,21 +63,15 @@ Tashana Landray
     preserve consistency.
   </p>
   <p>
-    Another issue this guide addresses is that of C++ feature bloat.
-    C++ is a huge language with many advanced features. In some cases
+    Another issue this guide addresses is that of C feature bloat. In some cases
     we constrain, or even ban, use of certain features. We do this to
     keep code simple and to avoid the various common errors and
     problems that these features can cause.  This guide lists these
     features and explains why their use is restricted.
   </p>
-  <p>
     
-    Open-source projects developed by Google
-    conform to the requirements in this guide.
-  </p>
-  
   <p>
-    Note that this guide is not a C++ tutorial: we assume that the
+    Note that this guide is not a C tutorial: we assume that the
     reader is familiar with the language.
     
   </p>
