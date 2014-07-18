@@ -586,7 +586,8 @@ Alec Stewart<br/>
         memset(&amp;data, 0, sizeof(Struct));
       </BAD_CODE_SNIPPET>
       <CODE_SNIPPET>
-        if (raw_size &lt; sizeof(int)) {
+        if (raw_size &lt; sizeof(int)) 
+        {
           printf( "compressed record not big enough for count: ",  raw_size);
           return false;
         }
@@ -761,7 +762,8 @@ Alec Stewart<br/>
           in classes have.
         </p>
         <CODE_SNIPPET>
-          struct UrlTableProperties {
+          struct UrlTableProperties
+          {
             string name;
             int num_entries;
           }
@@ -833,12 +835,14 @@ Alec Stewart<br/>
         therefore mixed case.
       </p>
       <CODE_SNIPPET>
-        enum UrlTableErrors {
+        enum UrlTableErrors 
+        {
           kOK = 0,
           kErrorOutOfMemory,
           kErrorMalformedInput,
         };
-        enum AlternateUrlTableErrors {
+        enum AlternateUrlTableErrors 
+        {
           OK = 0,
           OUT_OF_MEMORY = 1,
           MALFORMED_INPUT = 2,
@@ -1088,7 +1092,8 @@ Alec Stewart<br/>
         <CODE_SNIPPET>
           // Divide result by two, taking into account that x
           // contains the carry from the add.
-          for (int i = 0; i &lt; result-&gt;size(); i++) {
+          for (int i = 0; i &lt; result-&gt;size(); i++) 
+          {
             x = (x &lt;&lt; 8) + (*result)[i];
             (*result)[i] = x &gt;&gt; 1;
             x &amp;= 1;
@@ -1379,7 +1384,8 @@ Alec Stewart<br/>
         Functions look like this:
       </p>
       <CODE_SNIPPET>
-        ReturnType FunctionName(Type par_name1, Type par_name2) {
+        ReturnType FunctionName(Type par_name1, Type par_name2) 
+        {
           DoSomething();
           ...
         }
@@ -1389,7 +1395,8 @@ Alec Stewart<br/>
       </p>
       <CODE_SNIPPET>
         ReturnType ReallyLongFunctionName(Type par_name1, Type par_name2,
-                                                     Type par_name3) {
+                                                     Type par_name3) 
+        {
           DoSomething();
           ...
         }
@@ -1401,7 +1408,8 @@ Alec Stewart<br/>
         ReturnType ReallyReallyReallyLongFunctionName(
             Type par_name1,  // 4 space indent
             Type par_name2,
-            Type par_name3) {
+            Type par_name3) 
+        {
           DoSomething();  // 2 space indent
           ...
         }
@@ -1486,10 +1494,12 @@ Alec Stewart<br/>
         line per argument:
       </p>
       <CODE_SNIPPET>
-        if (...) {
+        if (...) 
+        {
           ...
           ...
-          if (...) {
+          if (...) 
+          {
             DoSomething(
                 argument1,  // 4 space indent
                 argument2,
@@ -1548,56 +1558,38 @@ Alec Stewart<br/>
 
   <STYLEPOINT title="Conditionals">
     <SUMMARY>
-      Prefer no spaces inside parentheses.  The <code>else</code>
+      Do not use spaces inside parentheses.  The <code>else</code>
       keyword belongs on a new line.
     </SUMMARY>
     <BODY>
-      <p>
-        There are two acceptable formats for a basic conditional
-        statement. One includes spaces between the parentheses and the
-        condition, and one does not.
-      </p>
-      <p>
-        The most common form is without spaces.  Either is fine, but
-        <em>be consistent</em>. If you are modifying a file, use the
-        format that is already present. If you are writing new code,
-        use the format that the other files in that directory or
-        project use. If in doubt and you have no personal preference,
-        do not add the spaces.
-      </p>
+      
       <CODE_SNIPPET>
-        if (condition) {  // no spaces inside parentheses
+        if (condition)  // no spaces inside parentheses
+        {      
           ...  // 2 space indent.
-        } else if (...) {  // The else goes on the same line as the closing brace.
+        } 
+        else if (...)  // The else goes on a new line.
+        {  
           ...
-        } else {
+        } 
+        else 
+        {
           ...
         }
       </CODE_SNIPPET>
-      <p>
-        If you prefer you may add spaces inside the
-        parentheses:
-      </p>
-      <CODE_SNIPPET>
-        if ( condition ) {  // spaces inside parentheses - rare
-          ...  // 2 space indent.
-        } else {  // The else goes on the same line as the closing brace.
-          ...
-        }
-      </CODE_SNIPPET>
+      
       <p>
         Note that in all cases you must have a space between the
-        <code>if</code> and the open parenthesis.  You must also have
-        a space between the close parenthesis and the curly brace, if
-        you're using one.
+        <code>if</code> and the open parenthesis.  The opening curly brace must
+        appear on a new line.
       </p>
       <BAD_CODE_SNIPPET>
         if(condition)     // Bad - space missing after IF.
-        if (condition){   // Bad - space missing before {.
-        if(condition){    // Doubly bad.
+        if (condition){   // Bad - { Appears on the same line as the condition.
       </BAD_CODE_SNIPPET>
       <CODE_SNIPPET>
-        if (condition) {  // Good - proper space after IF and before {.
+        if (condition) // Good - proper space after IF and { occurs on a new line.
+        {  
       </CODE_SNIPPET>
       <p>
         Short conditional statements may be written on one line if
@@ -1632,7 +1624,8 @@ Alec Stewart<br/>
         if (condition)
           DoSomething();  // 2 space indent.
 
-        if (condition) {
+        if (condition) 
+        {
           DoSomething();  // 2 space indent.
         }
       </CODE_SNIPPET>
@@ -1642,24 +1635,30 @@ Alec Stewart<br/>
       </p>
       <BAD_CODE_SNIPPET>
         // Not allowed - curly on IF but not ELSE
-        if (condition) {
+        if (condition) 
+        {
           foo;
-        } else
+        } 
+        else
           bar;
 
         // Not allowed - curly on ELSE but not IF
         if (condition)
           foo;
-        else {
+        else 
+        {
           bar;
         }
       </BAD_CODE_SNIPPET>
       <CODE_SNIPPET>
         // Curly braces around both IF and ELSE required because
         // one of the clauses used braces.
-        if (condition) {
+        if (condition) 
+        {
           foo;
-        } else {
+        } 
+        else 
+        {
           bar;
         }
       </CODE_SNIPPET>
@@ -1693,7 +1692,8 @@ Alec Stewart<br/>
         <code>continue</code>, but not a single semicolon.
       </p>
       <CODE_SNIPPET>
-        while (condition) {
+        while (condition) 
+        {
           // Repeat test until it returns false.
         }
         for (int i = 0; i &lt; kSomeNumber; ++i) {}  // Good - empty body.
@@ -1772,7 +1772,8 @@ Alec Stewart<br/>
       <CODE_SNIPPET>
         if (this_one_thing &gt; this_other_thing &amp;&amp;
             a_third_thing == a_fourth_thing &amp;&amp;
-            yet_another &amp;&amp; last_one) {
+            yet_another &amp;&amp; last_one) 
+        {
           ...
         }
       </CODE_SNIPPET>
@@ -1824,7 +1825,8 @@ Alec Stewart<br/>
       </p>
       <CODE_SNIPPET>
         // Good - directives at beginning of line
-          if (lopsided_score) {
+          if (lopsided_score) 
+          {
         #if DISASTER_PENDING      // Correct -- Starts at beginning of line
             DropEverything();
         # if NOTIFY               // OK but not required -- Spaces after #
@@ -1836,7 +1838,8 @@ Alec Stewart<br/>
       </CODE_SNIPPET>
       <BAD_CODE_SNIPPET>
         // Bad - indented directives
-          if (lopsided_score) {
+          if (lopsided_score) 
+          {
             #if DISASTER_PENDING  // Wrong!  The "#if" should be at beginning of line
             DropEverything();
             #endif                // Wrong!  Do not indent "#endif"
@@ -1854,7 +1857,8 @@ Alec Stewart<br/>
     <BODY>
       <SUBSECTION title="General">
         <CODE_SNIPPET>
-        void f(bool b) {  // Open braces should always have a space before them.
+        void f(bool b)
+        {  
           ...
         int i = 0;  // Semicolons usually have no space before them.
         int x[] = { 0 };  // Spaces inside braces for braced-init-list are
@@ -1874,20 +1878,24 @@ Alec Stewart<br/>
       </SUBSECTION>
       <SUBSECTION title="Loops and Conditionals">
         <CODE_SNIPPET>
-        if (b) {          // Space after the keyword in conditions and loops.
-        } else {          // Spaces around else.
+        if (b)            // Space after the keyword in conditions and loops. 
+        {          
+        } 
+        else 
+        {          
         }
         while (test) {}   // There is usually no space inside parentheses.
-        switch (i) {
-        for (int i = 0; i &lt; 5; ++i) {
-        switch ( i ) {    // Loops and conditions may have spaces inside
-        if ( test ) {     // parentheses, but this is rare.  Be consistent.
-        for ( int i = 0; i &lt; 5; ++i ) {
-        for ( ; i &lt; 5 ; ++i) {  // For loops always have a space after the
-          ...                   // semicolon, and may have a space before the
-                                // semicolon.
+        switch (i) 
+        {
+          for (int i = 0; i &lt; 5; ++i) 
+          
+        for ( ; i &lt; 5 ; ++i)    // For loops always have a space after the
+        {                          // semicolon, and may have a space before the
+          ...                      // semicolon.
+                                   
         
-        switch (i) {
+        switch (i) 
+        {
           case 1:         // No space before colon in a switch case.
             ...
           case 2: break;  // Use a space after a colon if there's code after it.
