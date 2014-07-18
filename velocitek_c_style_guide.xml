@@ -793,10 +793,7 @@ Alec Stewart<br/>
 
   <STYLEPOINT title="Function Names">
     <SUMMARY>
-      Regular functions have mixed case; get and set functions match
-      the name of the module variable: <code>MyExcitingFunction()</code>,      
-      <code>get_my_exciting_module_variable()</code>,
-      <code>set_my_exciting_module_variable()</code>.
+      Function names have mixed case: <code>MyExcitingFunction()</code>
     </SUMMARY>
     <BODY>
       <SUBSECTION title="Regular Functions">
@@ -815,19 +812,6 @@ Alec Stewart<br/>
           DeleteUrl()
           OpenFileOrDie()
         </CODE_SNIPPET>
-      </SUBSECTION>
-
-      <SUBSECTION title="Get and Set Functions">
-        <p>
-          Get and set functions should match the name of the module variable they are getting and setting. 
-        </p>
-        
-        <p>
-          You may also use lowercase letters for other very short
-          inlined functions. For example if a function were so cheap
-          you would not cache the value if you were calling it in a
-          loop, then lowercase naming would be acceptable.
-        </p>
       </SUBSECTION>
     </BODY>
   </STYLEPOINT>
