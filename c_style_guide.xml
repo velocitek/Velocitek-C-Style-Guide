@@ -41,7 +41,7 @@ Alec Stewart<br/>
   </p>
   <p>
     This guide is mostly a copy of the 
-    <a HREF="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++ Style Guide</a>, with the parts that are only relevant to C++ removed as well as a few Velocitek-specific additions.
+    <a HREF="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++ Style Guide</a>. Parts that are only relevant to C++ have been removed and a few Velocitek-specific additions have been made. The most substantial deviation from the Google C++ Style Guide is in indenting style; this guide specifies Allman style, where opening curly braces get a new line. The Google style puts an opening brace on the same line as the corresponding function declaration or loop statement.
   </p>
   
   <p>
@@ -253,11 +253,9 @@ Alec Stewart<br/>
                </li>
           <li> Other libraries
                </li>
-          <li> Your project's non-state machine <code>.h</code> files
+          <li> Your project's <code>.h</code> files
                </li>
-          <li> State machine <code>.h</code> files 
-               </li>
-          
+                    
         </ul>
       
     </SUMMARY>
@@ -649,22 +647,16 @@ Alec Stewart<br/>
 
   <STYLEPOINT title="File Names">
     <SUMMARY>
-      Filenames should be all lowercase and can include underscores
-      (<code>_</code>) or dashes (<code>-</code>).  Follow the
-      convention that your
-      
-      project
-      uses. If there is no consistent local pattern to follow, prefer "_".
+      Filenames should be all lowercase with underscores
+      (<code>_</code>) between words.
     </SUMMARY>
     <BODY>
       <p>
-        Examples of acceptable file names:
+        Here's an example of an acceptable file name:
       </p>
       <p>
         <code>
-          my_useful_module.c<br/>
-          my-useful-module.c<br/>
-          myusefulmodule.c<br/>          
+          my_useful_module.c<br/>          
         </code>
       </p>
       <p>
@@ -1484,16 +1476,12 @@ Alec Stewart<br/>
         <li> There is never a space between the parentheses and the
              parameters.
              </li>
-        <li> The open curly brace is always at the end of the same
-             line as the last parameter.
+        <li> The open curly brace is always on a new line.             
              </li>
-        <li> The close curly brace is either on the last line by itself
-             or (if other style rules permit) on the same line as the
+        <li> The close curly brace is on the last line by itself.
+             or on the same line as the
              open curly brace.
-             </li>
-        <li> There should be a space between the close parenthesis and
-             the open curly brace.
-             </li>
+             </li>        
         <li> All parameters should be named, with identical names in the
              declaration and implementation.
              </li>
