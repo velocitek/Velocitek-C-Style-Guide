@@ -945,19 +945,27 @@ Alec Stewart<br/>
           Every file should contain this boilerplate: 
         <CODE_SNIPPET>
           // Copyright (c) &lt;year&gt; Velocitek Inc. All rights reserved.
-          // Author: &lt;your name&gt;
+          // Author(s): &lt;first contributor&gt;, &lt;second contributor&gt;
+          //
+          // Please follow the Velocitek C Style Guide when maintaining this code.
+          // http://www.velocitek.com/style-guide/c_style_guide.xml
         </CODE_SNIPPET>
         </p>
         <p>
-          If you make significant changes to a file with an author line,
-          consider deleting the author line.
+          If you make changes to a file to the extent that the original author wouldn't recognize it,
+          consider removing the original author's name.
         </p>        
         <p>
-          All state machine <code>.c</code> files should contain this line underneath
-          the author line:
+          All state machine <code>.c</code> files should contain an additional line in the boilerplate:
         </p>
         <CODE_SNIPPET>
+          // Copyright (c) 2014 Velocitek Inc. All rights reserved.
+          // Author(s): &lt;first contributor&gt;, &lt;second contributor&gt;
+          //
           // Hierarchical State Machine Template by Ed Carryer, Stanford University
+          //
+          // Please follow the Velocitek C Style Guide when maintaining this code.
+          // http://www.velocitek.com/style-guide/c_style_guide.xml
         </CODE_SNIPPET>
       </SUBSECTION>
 
@@ -982,6 +990,47 @@ Alec Stewart<br/>
           the <code>.c</code>. Duplicated comments diverge.
         </p>
       </SUBSECTION>
+    </BODY>
+  </STYLEPOINT>
+
+  <STYLEPOINT title="Section Dividers">
+    <SUMMARY>
+      Use standard section divider when you want to visually breakup code into different sections.
+    </SUMMARY>
+    <BODY>
+      <SUBSECTION title="Standard Section Divider Format">
+        
+        <p>
+          Every section divider should look like these examples: 
+        <CODE_SNIPPET>
+          // Section Title ---------------------------------------------------------------
+          ... code
+
+          // Module Constants ------------------------------------------------------------
+          ... code
+
+          // Module Functions ------------------------------------------------------------
+          ... code
+
+          // Module Variables ------------------------------------------------------------
+          ... code
+
+          // Module Code -----------------------------------------------------------------
+          ... code
+        </CODE_SNIPPET>
+        </p>
+        <p>
+          There is one space after the section title and then enough dashes to make the whole
+          divider 80 characters long. The number of dashes varies, depending on the length of the section title,
+          to make the divider exactly 80 characters long.
+        </p>
+        <p>
+          The section titles are capitalized using title case; the first letter of every major word is capitalized.
+          Minor words such as conjunctions, articles and short prepositions are not capitalized. 
+          The first letter of the first word is always capitalized, and words of four letters or more are always capitalized.
+        </p>
+      </SUBSECTION>
+      
     </BODY>
   </STYLEPOINT>
 
@@ -1300,8 +1349,9 @@ Alec Stewart<br/>
   </p>
   
   <p>
-    To help you format code correctly, we've created a <A HREF="http://google-styleguide.googlecode.com/svn/trunk/google-c-style.el">settings
-    file for emacs</A>.
+     <A HREF="http://astyle.sourceforge.net/">Artistic Style</A> is a great utility for automatically formatting C code. 
+     Use this Artistic Style <A HREF="http://www.velocitek.com/style-guide/astyle_options.txt">options file</A> 
+     to format your code in a way that is consistent with this style guide.
   </p>
 
   <STYLEPOINT title="Line Length">
@@ -1990,13 +2040,7 @@ Alec Stewart<br/>
   <p>
     Use common sense and <em>BE CONSISTENT</em>.
   </p>
-  <p>
-    If you are editing code, take a few minutes to look at the
-    code around you and determine its style. If they use spaces
-    around their <code>if</code> clauses, you should, too. If
-    their comments have little boxes of stars around them, make
-    your comments have little boxes of stars around them too.
-  </p>
+  
   <p>
     The point of having style guidelines is to have a common
     vocabulary of coding so people can concentrate on what you are
