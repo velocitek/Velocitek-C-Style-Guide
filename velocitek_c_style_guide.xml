@@ -413,7 +413,8 @@ Alec Stewart<br/>
       size, use
       
       a precise-width integer type from
-      <code>&lt;stdint.h&gt;</code>, such as <code>int16_t</code>. 
+      <code>&lt;stdint.h&gt;</code>, such as <code>int16_t</code>
+       (or <code>signed int16</code> when using a CCS compiler). 
       Keep in mind that even if your value won't ever be too large for an
       <code>int</code>, it may be used in intermediate calculations which may
       require a larger type. When in doubt, choose a larger type.
@@ -436,7 +437,7 @@ Alec Stewart<br/>
           
           <code>&lt;stdint.h&gt;</code> defines
           types like <code>int16_t</code>, <code>uint32_t</code>,
-          <code>int64_t</code>, etc.
+          <code>int32_t</code>, etc.
           You should always use those in preference to
           <code>short</code>, <code>unsigned long long</code> and the
           like, when you need a guarantee on the size of an integer.
@@ -450,15 +451,15 @@ Alec Stewart<br/>
           <code>int</code> for such things. You should assume that an
           <code>int</code> is
           
-          at least 16 bits,
-          but don't assume that it has more than 16 bits.
-          If you need a 32-bit integer type, use
-          <code>int32_t</code> or
-          <code>uint32_t</code>.
+          at least 8 bits,
+          but don't assume that it has more than 8 bits.
+          If you need a 16-bit integer type, use
+          <code>int16_t</code> or
+          <code>uint16_t</code> (<code>signed int16</code> or <code>int16</code> for CCS).
         </p>
         
         <p>
-          For integers we know can be "big", use <code>int32_t</code>.
+          For integers we know can be "big", use <code>int32_t</code> (or <code>signed int32</code> with a CCS compiler).
         </p>
         
         <p>
@@ -1910,7 +1911,7 @@ Alec Stewart<br/>
         void f(bool b)
         {  
           ...
-        int i = 0;  // Semicolons usually have no space before them.
+        int i = 0;        // Semicolons usually have no space before them.
         int x[] = { 0 };  // Spaces inside braces for braced-init-list are
         int x[] = {0};    // optional.  If you use them, put them on both sides!
         
