@@ -97,32 +97,31 @@ Alec Stewart<br/>
     using header files.
   </p>
 
-  <STYLEPOINT title="The #define Guard">
-    <SUMMARY>
-      All header files should have <code>#define</code> guards to
-      prevent multiple inclusion.  The format of the symbol name
-      should be
-      <code><i>&lt;PROJECT&gt;</i>_<i>&lt;PATH&gt;</i>_<i>&lt;FILE&gt;</i>_H_</code>.
-    </SUMMARY>
-    <BODY>
-      
-      <p>
-        To guarantee uniqueness, they should be based on the full path
-        in a project's source tree.  For example, the file
-        <code>foo/src/bar/baz.h</code> in project <code>foo</code> should
-        have the following guard:
-      </p>
-      <CODE_SNIPPET>
-         #ifndef FOO_BAR_BAZ_H_
-         #define FOO_BAR_BAZ_H_
+<STYLEPOINT title="Use of #pragma once">
+  <SUMMARY>
+    All header files should begin with <code>#pragma once</code> to prevent multiple inclusion.
+  </SUMMARY>
+  <BODY>
 
-         ...
+    <p>
+      Instead of traditional <code>#define</code> guards, use <code>#pragma once</code> at the top of each header file. This is widely supported by modern compilers and avoids issues with guard name collisions and maintenance.
+    </p>
 
-         #endif  // FOO_BAR_BAZ_H_
-      </CODE_SNIPPET>
-      
-    </BODY>
-  </STYLEPOINT>
+    <p>
+      For example, the file <code>foo/src/bar/baz.h</code> in project <code>foo</code> should start with:
+    </p>
+    <CODE_SNIPPET>
+       #pragma once
+
+       ...
+    </CODE_SNIPPET>
+
+    <p>
+      This approach simplifies the code and is less error-prone than manually maintaining <code>#ifndef</code> include guards.
+    </p>
+
+  </BODY>
+</STYLEPOINT>
 
   <STYLEPOINT title="Inline Functions">
     <SUMMARY>
